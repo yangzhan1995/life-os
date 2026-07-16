@@ -283,9 +283,6 @@ export default function Home() {
 
     return (
       <div className="animate-fade-in">
-        <button onClick={() => setActiveDetail(null)} className="text-sm text-muted-foreground hover:text-foreground flex items-center gap-1 mb-4 transition-colors">
-          ← 返回
-        </button>
         <div className="bg-card border rounded-xl p-6">
           {Icon && <Icon size={32} className="text-primary mb-3" />}
           <h3 className="text-xl font-bold">{item.full || item.title}</h3>
