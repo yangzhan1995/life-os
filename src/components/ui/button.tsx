@@ -2,35 +2,21 @@ import * as React from "react"
 import { cn } from "@/lib/utils"
 
 const variants = {
-  default:
-    "bg-primary text-primary-foreground hover:bg-primary/90 shadow-sm",
-  destructive:
-    "bg-destructive text-destructive-foreground hover:bg-destructive/90 shadow-sm",
-  "destructive-outline":
-    "border border-destructive text-destructive hover:bg-destructive/10",
-  outline:
-    "border border-input bg-transparent hover:bg-accent hover:text-accent-foreground",
-  secondary:
-    "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-  ghost: "hover:bg-accent hover:text-accent-foreground",
-  link: "text-primary underline-offset-4 hover:underline",
+  default: "bg-[#000] text-white hover:opacity-85",
+  secondary: "bg-white text-[#000] hover:bg-[#f7f7f5]",
+  outline: "border border-[#e6e6e6] bg-white text-[#000] hover:bg-[#f7f7f5]",
+  ghost: "text-[#000] hover:bg-[#f7f7f5]",
+  link: "text-[#000] underline-offset-4 hover:underline",
 }
 
 const sizes = {
-  default: "h-9 px-4 py-2",
-  sm: "h-8 rounded-md px-3 text-xs",
-  lg: "h-10 rounded-md px-8",
-  xl: "h-12 rounded-md px-10 text-base",
-  xs: "h-7 rounded-md px-2 text-xs",
-  icon: "h-9 w-9",
-  "icon-xs": "h-6 w-6",
-  "icon-sm": "h-8 w-8",
-  "icon-lg": "h-10 w-10",
-  "icon-xl": "h-12 w-12",
+  default: "h-11 rounded-[50px] px-5 text-[20px] font-[480] tracking-[-0.1px]",
+  sm: "h-9 rounded-[50px] px-4 text-sm",
+  lg: "h-12 rounded-[50px] px-6 text-[20px] font-[480]",
+  icon: "h-10 w-10 rounded-full",
 }
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: keyof typeof variants
   size?: keyof typeof sizes
   loading?: boolean
@@ -41,7 +27,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <button
         className={cn(
-          "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+          "inline-flex items-center justify-center gap-2 whitespace-nowrap transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#000] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50",
           variants[variant],
           sizes[size],
           className

@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Figma Design System — Color Tokens
+   ============================================================ */
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -18,85 +22,85 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-info: var(--info);
-  --color-info-foreground: var(--info-foreground);
-  --color-success: var(--success);
-  --color-success-foreground: var(--success-foreground);
-  --color-warning: var(--warning);
-  --color-warning-foreground: var(--warning-foreground);
+  --color-block-lime: var(--block-lime);
+  --color-block-lilac: var(--block-lilac);
+  --color-block-cream: var(--block-cream);
+  --color-block-mint: var(--block-mint);
+  --color-block-pink: var(--block-pink);
+  --color-block-coral: var(--block-coral);
+  --color-block-navy: var(--block-navy);
+  --color-accent-magenta: var(--accent-magenta);
+  --color-surface-soft: var(--surface-soft);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-xs: 2px;
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-pill: 50px;
+  --radius-full: 9999px;
 }
 
-:root {
-  --radius: 0.5rem;
-}
-
-/* ==================== Light Mode ==================== */
-/* #E4E4E4 bg · #111111 text · #FE8A01 accent · #403734 / #38322F dark accents */
+/* ============================================================
+   Root Variables
+   ============================================================ */
 
 :root {
-  --background: #E4E4E4;
-  --foreground: #111111;
+  /* Brand */
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  --ink: #000000;
+  --canvas: #ffffff;
+  --inverse-canvas: #000000;
+  --inverse-ink: #ffffff;
+  --on-inverse-soft: rgba(255,255,255,0.16);
+
+  /* Surfaces */
+  --background: #ffffff;
+  --foreground: #000000;
   --card: #ffffff;
-  --card-foreground: #111111;
-  --primary: #FE8A01;
-  --primary-foreground: #111111;
-  --secondary: #403734;
-  --secondary-foreground: #E4E4E4;
-  --muted: #d8d8d8;
-  --muted-foreground: #403734;
-  --accent: #38322F;
-  --accent-foreground: #E4E4E4;
+  --card-foreground: #000000;
+  --secondary: #f7f7f5;
+  --secondary-foreground: #000000;
+  --muted: #f7f7f5;
+  --muted-foreground: #666666;
+  --accent: #f7f7f5;
+  --accent-foreground: #000000;
+  --surface-soft: #f7f7f5;
+
+  /* Lines */
+  --border: #e6e6e6;
+  --input: #e6e6e6;
+  --ring: #000000;
+  --hairline: #e6e6e6;
+  --hairline-soft: #f1f1f1;
+
+  /* Pastel Color Blocks */
+  --block-lime: #dceeb1;
+  --block-lilac: #c5b0f4;
+  --block-cream: #f4ecd6;
+  --block-mint: #c8e6cd;
+  --block-pink: #efd4d4;
+  --block-coral: #f3c9b6;
+  --block-navy: #1f1d3d;
+
+  /* Accent */
+  --accent-magenta: #ff3d8b;
+
+  /* Semantic */
   --destructive: #d93025;
   --destructive-foreground: #ffffff;
-  --border: #c8c8c8;
-  --input: #c8c8c8;
-  --ring: #FE8A01;
-  --info: #403734;
-  --info-foreground: #E4E4E4;
-  --success: #2d6a4f;
-  --success-foreground: #ffffff;
-  --warning: #FE8A01;
-  --warning-foreground: #111111;
+  --semantic-success: #1ea64a;
+  --overlay-scrim: rgba(0,0,0,0.6);
+
+  /* Radius */
+  --radius: 8px;
 }
 
-/* ==================== Dark Mode ==================== */
-/* #111111 bg · #E4E4E4 text · #FE8A01 accent · #38322F / #403734 cards and borders */
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #111111;
-    --foreground: #E4E4E4;
-    --card: #38322F;
-    --card-foreground: #E4E4E4;
-    --primary: #FE8A01;
-    --primary-foreground: #111111;
-    --secondary: #403734;
-    --secondary-foreground: #E4E4E4;
-    --muted: #38322F;
-    --muted-foreground: #b0b0b0;
-    --accent: #403734;
-    --accent-foreground: #E4E4E4;
-    --destructive: #f28b82;
-    --destructive-foreground: #111111;
-    --border: #403734;
-    --input: #403734;
-    --ring: #FE8A01;
-    --info: #403734;
-    --info-foreground: #E4E4E4;
-    --success: #81c784;
-    --success-foreground: #111111;
-    --warning: #FE8A01;
-    --warning-foreground: #111111;
-  }
-}
-
-/* ==================== Base ==================== */
+/* ============================================================
+   Base
+   ============================================================ */
 
 * {
   border-color: var(--border);
@@ -107,131 +111,161 @@ html {
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: var(--canvas);
+  color: var(--ink);
   font-family: var(--font-sans);
+  font-weight: 320;
+  font-size: 18px;
+  line-height: 1.45;
+  letter-spacing: -0.26px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
   background: var(--border);
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: var(--muted-foreground);
+  border-radius: 2px;
 }
 
-/* ==================== Floating particles ==================== */
+/* ============================================================
+   Typography — Figma-style
+   ============================================================ */
 
-.floating-particles {
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  overflow: hidden;
+.display-xl {
+  font-size: 86px;
+  font-weight: 340;
+  line-height: 1.00;
+  letter-spacing: -1.72px;
+}
+.display-lg {
+  font-size: 64px;
+  font-weight: 340;
+  line-height: 1.10;
+  letter-spacing: -0.96px;
+}
+.headline {
+  font-size: 26px;
+  font-weight: 540;
+  line-height: 1.35;
+  letter-spacing: -0.26px;
+}
+.subhead {
+  font-size: 26px;
+  font-weight: 340;
+  line-height: 1.35;
+  letter-spacing: -0.26px;
+}
+.body-lg {
+  font-size: 20px;
+  font-weight: 330;
+  line-height: 1.40;
+  letter-spacing: -0.14px;
+}
+.body-sm {
+  font-size: 16px;
+  font-weight: 330;
+  line-height: 1.45;
+  letter-spacing: -0.14px;
+}
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.30;
+  letter-spacing: 0.54px;
+  text-transform: uppercase;
+}
+.caption-mono {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.00;
+  letter-spacing: 0.60px;
+  text-transform: uppercase;
 }
 
-.particle {
-  position: absolute;
-  border-radius: 50%;
-  animation: floatUp linear infinite;
-  opacity: 0;
+@media (max-width: 768px) {
+  .display-xl { font-size: 48px; letter-spacing: -0.96px; }
+  .display-lg { font-size: 36px; letter-spacing: -0.54px; }
 }
 
-@keyframes floatUp {
-  0% {
-    transform: translateY(100vh) scale(0);
-    opacity: 0;
+/* ============================================================
+   Color Block Sections (signature Figma device)
+   ============================================================ */
+
+.color-block {
+  border-radius: 24px;
+  padding: 48px;
+}
+@media (max-width: 768px) {
+  .color-block {
+    border-radius: 0;
+    padding: 32px 16px;
+    margin-left: -16px;
+    margin-right: -16px;
   }
-  10% { opacity: 0.2; }
-  90% { opacity: 0.2; }
-  100% {
-    transform: translateY(-10vh) scale(1);
-    opacity: 0;
-  }
 }
 
-/* ==================== Animated gradient border ==================== */
+.block-lime  { background: var(--block-lime); color: var(--ink); }
+.block-lilac { background: var(--block-lilac); color: var(--ink); }
+.block-cream { background: var(--block-cream); color: var(--ink); }
+.block-mint  { background: var(--block-mint); color: var(--ink); }
+.block-pink  { background: var(--block-pink); color: var(--ink); }
+.block-coral { background: var(--block-coral); color: var(--ink); }
+.block-navy  { background: var(--block-navy); color: var(--inverse-ink); }
 
-.gradient-border {
-  position: relative;
-}
-.gradient-border::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  padding: 1px;
-  background: linear-gradient(135deg, #FE8A01, #403734, #38322F, #FE8A01);
-  background-size: 300% 300%;
-  animation: borderGlow 4s ease infinite;
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  pointer-events: none;
-}
+/* ============================================================
+   Pill Buttons (Figma signature)
+   ============================================================ */
 
-@keyframes borderGlow {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 480;
+  line-height: 1.40;
+  letter-spacing: -0.10px;
+  padding: 10px 20px;
+  transition: opacity 0.15s;
 }
+.btn-pill-primary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+.btn-pill-primary:hover { opacity: 0.85; }
+.btn-pill-secondary {
+  background: var(--canvas);
+  color: var(--ink);
+}
+.btn-pill-secondary:hover { background: var(--surface-soft); }
 
-/* ==================== Animations ==================== */
+/* ============================================================
+   Animations
+   ============================================================ */
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out forwards;
 }
-
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 .animate-fade-in {
-  animation: fadeIn 0.4s ease-out forwards;
+  animation: fadeIn 0.3s ease-out forwards;
 }
 
 .animation-delay-100 { animation-delay: 0.1s; }
 .animation-delay-200 { animation-delay: 0.2s; }
 .animation-delay-300 { animation-delay: 0.3s; }
-.animation-delay-400 { animation-delay: 0.4s; }
-.animation-delay-500 { animation-delay: 0.5s; }
-
-@keyframes accordion-down {
-  from { height: 0; opacity: 0; }
-  to { height: var(--accordion-content-height, 200px); opacity: 1; }
-}
-@keyframes accordion-up {
-  from { height: var(--accordion-content-height, 200px); opacity: 1; }
-  to { height: 0; opacity: 0; }
-}
-
-@keyframes dialog-in {
-  from {
-    opacity: 0;
-    transform: scale(0.95) translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
-}
-.animate-dialog-in {
-  animation: dialog-in 0.2s ease-out forwards;
-}
