@@ -350,13 +350,6 @@ export default function Home() {
             {sidebarOpen ? <RiMenuFoldLine size={18} /> : <RiMenuUnfoldLine size={18} />}
           </button>
         </div>
-        {/* Theme toggle */}
-        <div className="px-3 py-2 border-b" style={{borderColor:"var(--line)"}}>
-          <button onClick={toggleTheme} className="flex items-center gap-2 text-[13px] w-full py-1.5 px-2 rounded-lg hover:bg-[var(--mut)] transition-colors" style={{color:"var(--mut-fg)"}}>
-            {darkMode ? <RiSunLine size={16} /> : <RiMoonIcon size={16} />}
-            {sidebarOpen && (darkMode ? "亮色模式" : "暗色模式")}
-          </button>
-        </div>
         <nav className="flex-1 overflow-auto py-2">
           {navSections.map(s => (
             <div key={s.id}>
@@ -390,6 +383,10 @@ export default function Home() {
           ) : (
             <span className="font-medium text-[15px]">{navSections.find(s => s.id === activeSection)?.label}</span>
           )}
+          <div className="flex-1" />
+          <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-[var(--mut)] transition-colors" title={darkMode ? "亮色模式" : "暗色模式"}>
+            {darkMode ? <RiSunLine size={18} /> : <RiMoonIcon size={18} />}
+          </button>
         </div>
         <div className={`color-block ${block}`}>
           <div className="max-w-[900px] mx-auto">{renderContent()}</div>
