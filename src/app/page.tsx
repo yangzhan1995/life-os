@@ -175,7 +175,7 @@ export default function Home() {
     const Icon = item.icon
 
     return (
-      <div className="space-y-10 max-w-[800px]">
+      <div className="space-y-10 max-w-[800px] detail-stagger">
         <div className="card-white p-10">
           {Icon && <Icon size={36} className="mb-4 opacity-70" />}
           <h2 className="display-lg mb-3">{item.full || item.title}</h2>
@@ -217,7 +217,7 @@ export default function Home() {
 
     if (activeSection === "judge") return (
       <div className="space-y-16">
-        <div className="text-center py-16">
+        <div className="text-center py-16 hero-enter">
           <p className="eyebrow mb-3">操作系统 · 判断层</p>
           <h1 className="display-xl mb-4">这件事我能<br/>改变吗？</h1>
           <div className="flex items-center justify-center gap-2.5 mb-4 flex-wrap">
@@ -229,7 +229,7 @@ export default function Home() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
           <div>
             <div className="flex items-center gap-2 mb-5"><RiArrowRightUpLine size={22} /><h3 className="headline">向外四思维</h3></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 grid-stagger">
               {outwardTools.map(t => (
                 <div key={t.id} className="card-interactive p-5" onClick={() => setActiveDetail(t.id)}>
                   <t.icon size={22} className="mb-2.5 opacity-60" />
@@ -241,7 +241,7 @@ export default function Home() {
           </div>
           <div>
             <div className="flex items-center gap-2 mb-5"><RiMentalHealthLine size={22} /><h3 className="headline">向内六传统</h3></div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 grid-stagger">
               {inwardTools.map(t => (
                 <div key={t.id} className="card-interactive p-5" onClick={() => setActiveDetail(t.id)}>
                   <t.icon size={22} className="mb-2.5 opacity-60" />
@@ -260,7 +260,7 @@ export default function Home() {
         <p className="eyebrow mb-2">向外</p>
         <h2 className="display-lg mb-3">向外四思维</h2>
         <p className="subhead mb-10" style={{color:"var(--mut-fg)"}}>四把向外的工具，分析利益、评估力量、追问本质、执行方案</p>
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 grid-stagger">
           {outwardTools.map(t => (
             <div key={t.id} className="card-interactive p-7" onClick={() => setActiveDetail(t.id)}>
               <t.icon size={28} className="mb-3 opacity-60" />
@@ -388,10 +388,10 @@ export default function Home() {
 
       {/* Main */}
       <main className="flex-1 min-w-0">
-        <div className="sticky top-0 z-20 border-b h-14 flex items-center px-6 backdrop-blur-xl" style={{background:"var(--bg)", borderColor:"var(--line)"}}>
+        <div className="sticky top-0 z-20 border-b h-14 flex items-center px-6 backdrop-blur-xl top-bar" style={{background:"var(--bg)", borderColor:"var(--line)"}}>
           {activeDetail ? (
             <div className="flex items-center gap-3 text-[15px]">
-              <button onClick={() => setActiveDetail(null)} className="hover:opacity-60">← 返回</button>
+              <button onClick={() => setActiveDetail(null)} className="back-btn">← 返回</button>
               <span style={{color:"var(--line)"}}>|</span>
               <span className="font-medium">{detailItem?.full || detailItem?.title}</span>
             </div>
@@ -399,12 +399,12 @@ export default function Home() {
             <span className="font-medium text-[15px]">{navSections.find(s => s.id === activeSection)?.label}</span>
           )}
           <div className="flex-1" />
-          <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-[var(--mut)] transition-colors" title={darkMode ? "亮色模式" : "暗色模式"}>
+          <button onClick={toggleTheme} className="p-2 rounded-full hover:bg-[var(--mut)] transition-colors theme-toggle-icon" title={darkMode ? "亮色模式" : "暗色模式"}>
             {darkMode ? <RiSunLine size={18} /> : <RiMoonIcon size={18} />}
           </button>
         </div>
         <div className={`color-block ${block}`}>
-          <div className="max-w-[900px] mx-auto">{renderContent()}</div>
+          <div className="max-w-[900px] mx-auto content-enter" key={activeSection + (activeDetail || "")}>{renderContent()}</div>
         </div>
         <footer className="py-16 text-center">
           <p className="text-[14px]" style={{color:"var(--mut-fg)"}}>人生操作系统 · Life OS</p>
