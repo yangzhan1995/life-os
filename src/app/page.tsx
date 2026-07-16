@@ -13,7 +13,7 @@ import {
   RiGamepadLine, RiHeartLine, RiStarLine, RiForbidLine,
   RiAlarmWarningLine, RiTimeLine, RiCoinsLine, RiShutDownLine,
   RiCandleLine, RiStackLine, RiMenuFoldLine, RiMenuUnfoldLine,
-  RiSunLine, RiMoonLine as RiMoonIcon,
+  RiSunLine, RiMoonLine as RiMoonIcon, RiArrowDownSLine, RiArrowRightSLine,
 } from "@remixicon/react"
 
 /* ============================================================
@@ -134,6 +134,13 @@ export default function Home() {
   const [sidebarOpen, setSidebarOpen] = useState(true)
   const [activeDetail, setActiveDetail] = useState<string | null>(null)
   const [darkMode, setDarkMode] = useState(false)
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    judge: true, outward: false, inward: false, foundation: false, meta: false,
+  })
+
+  const toggleSection = (id: string) => {
+    setExpandedSections(prev => ({ ...prev, [id]: !prev[id] }))
+  }
 
   useEffect(() => {
     const m = localStorage.getItem("theme")
@@ -351,23 +358,31 @@ export default function Home() {
           </button>
         </div>
         <nav className="flex-1 overflow-auto py-2">
-          {navSections.map(s => (
+          {navSections.map(s => {
+            const hasChildren = s.children && s.children.length > 0
+            const isExpanded = expandedSections[s.id]
+            return (
             <div key={s.id}>
-              <button onClick={() => { setActiveSection(s.id); setActiveDetail(null) }}
-                className={`w-full flex items-center gap-2.5 px-3 py-2.5 text-[15px] transition-colors text-left ${activeSection === s.id ? "font-semibold" : ""}`}
+              <button
+                onClick={() => { setActiveSection(s.id); setActiveDetail(null); if (hasChildren) toggleSection(s.id) }}
+                className={`w-full flex items-center gap-2 px-3 py-2.5 text-[15px] transition-colors text-left ${activeSection === s.id ? "font-semibold" : ""}`}
                 style={{background: activeSection === s.id ? "var(--mut)" : "transparent"}}
               >
                 <s.icon size={18} className="shrink-0 opacity-60" />
-                {sidebarOpen && s.label}
+                {sidebarOpen && <span className="flex-1 truncate">{s.label}</span>}
+                {sidebarOpen && hasChildren && (
+                  isExpanded ? <RiArrowDownSLine size={14} className="shrink-0 opacity-40" /> : <RiArrowRightSLine size={14} className="shrink-0 opacity-40" />
+                )}
               </button>
-              {sidebarOpen && s.children?.map(c => (
+              {sidebarOpen && hasChildren && isExpanded && s.children!.map(c => (
                 <button key={c.id} onClick={() => { setActiveSection(s.id); setActiveDetail(c.id) }}
-                  className="w-full text-left text-[13px] py-1.5 pl-9 pr-2 rounded-r block truncate transition-colors"
+                  className="w-full text-left text-[13px] py-1.5 pl-9 pr-2 rounded-r block truncate transition-colors hover:bg-[var(--mut)]"
                   style={{color:"var(--mut-fg)"}}
                 >{c.label}</button>
               ))}
             </div>
-          ))}
+          )
+          })}
         </nav>
       </aside>
 
