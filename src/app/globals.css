@@ -207,121 +207,122 @@ body {
    Transitions & Animations
    ============================================================ */
 
-/* Color-block background transitions */
 .color-block {
-  transition: background-color 0.4s ease, color 0.4s ease;
+  transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Sidebar width */
+/* Sidebar */
 aside {
-  transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: width 0.3s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Nav sub-items slide down */
-.nav-sub-enter {
-  animation: slideDown 0.2s ease-out forwards;
-}
-@keyframes slideDown {
-  from { opacity: 0; max-height: 0; }
-  to { opacity: 1; max-height: 600px; }
-}
-
-/* Page content fade+slide on section switch */
+/* Page content — forced remount via key, so this always fires */
 .content-enter {
-  animation: fadeUpIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: fadeUpIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 @keyframes fadeUpIn {
-  from { opacity: 0; transform: translateY(12px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Detail card stagger */
+/* Detail page — each card staggers in */
 .detail-stagger > * {
-  animation: fadeUpIn 0.4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: fadeUpIn 0.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
 }
 .detail-stagger > *:nth-child(1) { animation-delay: 0s; }
-.detail-stagger > *:nth-child(2) { animation-delay: 0.06s; }
-.detail-stagger > *:nth-child(3) { animation-delay: 0.12s; }
-.detail-stagger > *:nth-child(4) { animation-delay: 0.18s; }
-.detail-stagger > *:nth-child(5) { animation-delay: 0.24s; }
-.detail-stagger > *:nth-child(6) { animation-delay: 0.30s; }
-.detail-stagger > *:nth-child(7) { animation-delay: 0.36s; }
-.detail-stagger > *:nth-child(8) { animation-delay: 0.42s; }
+.detail-stagger > *:nth-child(2) { animation-delay: 0.08s; }
+.detail-stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.detail-stagger > *:nth-child(4) { animation-delay: 0.24s; }
+.detail-stagger > *:nth-child(5) { animation-delay: 0.32s; }
+.detail-stagger > *:nth-child(6) { animation-delay: 0.40s; }
+.detail-stagger > *:nth-child(7) { animation-delay: 0.48s; }
+.detail-stagger > *:nth-child(8) { animation-delay: 0.56s; }
 
-/* Theme toggle icon spin */
-.theme-toggle-icon {
-  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.theme-toggle-icon:active {
-  transform: rotate(180deg);
-}
-
-/* Button / interactive hover scale */
-.btn-hover {
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.btn-hover:hover {
-  transform: scale(1.02);
-}
-.btn-hover:active {
-  transform: scale(0.98);
-}
-
-/* Badge hover */
-.badge-pill {
-  transition: all 0.2s ease;
-}
-.badge-pill:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-/* Grid card stagger on section load */
+/* Grid cards stagger in */
 .grid-stagger > * {
-  animation: fadeUpIn 0.35s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: fadeUpIn 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
   opacity: 0;
 }
-.grid-stagger > *:nth-child(1) { animation-delay: 0.02s; }
-.grid-stagger > *:nth-child(2) { animation-delay: 0.06s; }
-.grid-stagger > *:nth-child(3) { animation-delay: 0.10s; }
-.grid-stagger > *:nth-child(4) { animation-delay: 0.14s; }
-.grid-stagger > *:nth-child(5) { animation-delay: 0.18s; }
-.grid-stagger > *:nth-child(6) { animation-delay: 0.22s; }
-.grid-stagger > *:nth-child(7) { animation-delay: 0.26s; }
-.grid-stagger > *:nth-child(8) { animation-delay: 0.30s; }
-.grid-stagger > *:nth-child(9) { animation-delay: 0.34s; }
-.grid-stagger > *:nth-child(10) { animation-delay: 0.38s; }
-.grid-stagger > *:nth-child(11) { animation-delay: 0.42s; }
-.grid-stagger > *:nth-child(12) { animation-delay: 0.46s; }
+.grid-stagger > *:nth-child(1) { animation-delay: 0.03s; }
+.grid-stagger > *:nth-child(2) { animation-delay: 0.08s; }
+.grid-stagger > *:nth-child(3) { animation-delay: 0.13s; }
+.grid-stagger > *:nth-child(4) { animation-delay: 0.18s; }
+.grid-stagger > *:nth-child(5) { animation-delay: 0.23s; }
+.grid-stagger > *:nth-child(6) { animation-delay: 0.28s; }
+.grid-stagger > *:nth-child(7) { animation-delay: 0.33s; }
+.grid-stagger > *:nth-child(8) { animation-delay: 0.38s; }
+.grid-stagger > *:nth-child(9) { animation-delay: 0.43s; }
+.grid-stagger > *:nth-child(10) { animation-delay: 0.48s; }
+.grid-stagger > *:nth-child(11) { animation-delay: 0.53s; }
+.grid-stagger > *:nth-child(12) { animation-delay: 0.58s; }
 
-/* Hero entrance */
+/* Hero */
 .hero-enter {
-  animation: heroIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  animation: heroIn 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 @keyframes heroIn {
-  from { opacity: 0; transform: translateY(24px); }
+  from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Back button */
+/* Card hover — more noticeable */
+.card-interactive {
+  background: var(--card-bg);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+.card-interactive:hover {
+  border-color: var(--fg);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+}
+
+/* Theme toggle spin */
+.theme-toggle-icon {
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.theme-toggle-icon:active {
+  transform: rotate(360deg);
+}
+
+/* Back button — slide on hover */
 .back-btn {
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
 }
 .back-btn:hover {
-  transform: translateX(-3px);
+  transform: translateX(-4px);
+  opacity: 0.6;
 }
 
-/* Top bar bg transition */
+/* Top bar */
 .top-bar {
-  transition: background-color 0.3s ease, border-color 0.3s ease;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
 }
 
-/* Element enter */
+/* Nav items hover */
+nav button {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Sidebar toggle button */
+aside button {
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+aside button:active {
+  transform: scale(0.92);
+}
+
+/* Fade in (general) */
 .animate-fade-in {
-  animation: fadeIn 0.3s ease-out forwards;
+  animation: fadeIn 0.4s ease-out forwards;
 }
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
 }
